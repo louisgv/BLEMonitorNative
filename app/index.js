@@ -7,35 +7,25 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Router, Scene,} from 'react-native-mobx';
 import {observer} from 'mobx-react/native';
 
-import Swiper from 'react-native-swiper';
+import {Counter, CounterModel,} from 'containers/Counter';
 
-import SnapCamera from 'components/SnapCamera';
-
-import {Terminal, TerminalModel,} from 'containers/Terminal';
 
 @observer
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.terminal}>
-        <Terminal model={TerminalModel}/>
+      <View style={styles.app}>
+        <Counter model={CounterModel}/>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  wrapper: {},
-  terminal: {
+  app: {
     flex: 1
-  },
-  camera: {
-    flex: 1
-  },
-  counter: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+		justifyContent: 'center',
+		alignItems: 'center',
   },
   text: {
     color: '#fff',
