@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+
+import { ImmutableVirtualizedList } from 'react-native-immutable-list-view';
+
 import {View, Text, TouchableOpacity, StyleSheet, Dimensions,} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import Button from 'react-native-button';
@@ -9,17 +12,26 @@ export default class Counter extends Component {
     return false;
   }
 
+	componentWillMount() {
+		const model = this.props.model;
+		model.enableSubscription();
+	}
+
+	generateRow =({item})=> <View style={styles.cmdWrapper}>
+		<Status {...item} model={this.props.model} style={styles.command} />
+	</View>
+
   render() {
     const model = this.props.model;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to lshell
-        </Text>
-        <Text>Counter: {model.counter}</Text>
-        <Text>Total clicks: {model.total}</Text>
-        <Button onPress={model.increase}>+</Button>
-        <Button onPress={model.decrease}>-</Button>
+				<ImmutableVirtualizedList
+					ref={model.setListRef}
+					style={styles.cmdList}
+					immutableData={model.displayStack}
+					renderItem={this.generateRow}
+					keyExtractor={(item, index) => index}
+				/>
       </View>
     )
   }
