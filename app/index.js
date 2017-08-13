@@ -7,8 +7,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Router, Scene,} from 'react-native-mobx';
 import {observer} from 'mobx-react/native';
 
-import {Counter, CounterModel,} from 'containers/Counter';
-
+import {Counter, CounterModel,} from 'components/Counter';
 
 @observer
 export default class App extends Component {
@@ -23,7 +22,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   app: {
-    flex: 1
+    flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
   },

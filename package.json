@@ -9,11 +9,12 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"react": "16.0.0-alpha.12",
-		"react-native": "0.47.1",
 		"mobx": "^3.2.2",
 		"mobx-react": "^4.2.2",
 		"prop-types": "^15.5.10",
+		"react": "16.0.0-alpha.12",
+		"react-native": "0.47.1",
+		"react-native-button": "^2.1.0",
 		"react-native-mobx": "^0.3.1",
 		"react-native-os": "^1.1.0",
 		"react-native-router-flux": "^4.0.0-beta.17"
