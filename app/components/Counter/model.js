@@ -1,8 +1,6 @@
 import {action, reaction, observable, observe, computed, autorun} from 'mobx';
 import autobind from 'autobind-decorator'
 
-import BLEMonitor from './BLEMonitor';
-
 @autobind
 class Model {
   @observable counter = 0;
@@ -12,8 +10,6 @@ class Model {
 
   constructor(){
     reaction(()=>this.counter, this.increaseTotal);
-
-		bleMonitor.start()
 
   }
 
