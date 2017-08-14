@@ -18,17 +18,24 @@ export default class Counter extends Component {
 	}
 
 	generateRow =({item})=> <View style={styles.cmdWrapper}>
-		<Status {...item} model={this.props.model} style={styles.command} />
+		<Text>
+			{item.name} {item.id} | {item.rssi}
+		</Text>
 	</View>
 
   render() {
     const model = this.props.model;
     return (
       <View style={styles.container}>
+				<Text>
+					List of BLE:
+				</Text>
+				<Text>
+					name id | rssi
+				</Text>
 				<ImmutableVirtualizedList
-					ref={model.setListRef}
 					style={styles.cmdList}
-					immutableData={model.displayStack}
+					immutableData={model.deviceList}
 					renderItem={this.generateRow}
 					keyExtractor={(item, index) => index}
 				/>

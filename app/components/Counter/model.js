@@ -7,22 +7,26 @@ import {
 	computed,
 	autorun
 } from 'mobx';
+import {
+	List
+} from 'immutable';
+
+import {BleManager} from 'react-native-ble-plx';
 
 @autobind
 class Model {
 	manager = new BleManager()
-
+	@observable deviceList = List([]);
 	constructor() {
-		reaction(() => this.counter, this.increaseTotal);
-	}
 
+	}
 	scanAndConnect() {
 		this.manager.startDeviceScan(null, null, (error, device) => {
 			if(error) {
 				// Handle error (scanning will be stopped automatically)
 				return
 			}
-			console.log(device);
+			this.addDevice(device)
 		});
 	}
 	enableSubscription() {
@@ -32,6 +36,9 @@ class Model {
 				subscription.remove();
 			}
 		}, true);
+	}
+	@action addDevice(device) {
+		this.deviceList = this.deviceList.unshift(device);
 	}
 }
 export default new Model();
